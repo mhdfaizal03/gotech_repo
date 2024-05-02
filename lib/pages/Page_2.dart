@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:get/get.dart';
 import 'package:gotech_app/pages/Page_2.dart';
+import 'package:gotech_app/pages/page_3.dart';
+import 'package:lottie/lottie.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({
@@ -12,35 +16,32 @@ class Page2 extends StatefulWidget {
 
 class _Page2State extends State<Page2> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            child: Image.asset('assets/page2.jpg'),
+            child: Image.asset(
+              'assets/page1.jpg',
+            ),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const Page2(),
-                ),
-              );
-            },
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.blueAccent[300]),
-                shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))))),
-            child: const Text('Go to Page 3'),
-          )
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
   }
 }

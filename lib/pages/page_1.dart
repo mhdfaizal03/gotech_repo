@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:gotech_app/pages/Page_2.dart';
 
 class Page1 extends StatefulWidget {
@@ -17,25 +18,13 @@ class _Page1State extends State<Page1> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          const Text(
+            'Hi everyone,',
+            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+          ),
           Container(
             child: Image.asset('assets/page1.jpg'),
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const Page2(),
-                ),
-              );
-            },
-            style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all(Colors.blueAccent[300]),
-                shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10))))),
-            child: const Text('Go to Page 2'),
-          )
         ],
       ),
     );
