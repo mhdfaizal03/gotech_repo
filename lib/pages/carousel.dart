@@ -63,7 +63,13 @@ class _CarouselState extends State<Carousel> {
                               curve: Curves.easeIn);
                         },
                         child: const Text('Next'))
-                    : TextButton(onPressed: () {}, child: const Text('Done')),
+                    : TextButton(
+                        onPressed: () {
+                          controller.nextPage(
+                              duration: const Duration(milliseconds: 500),
+                              curve: Curves.easeIn);
+                        },
+                        child: const Text('Done')),
               ],
             ))
       ],

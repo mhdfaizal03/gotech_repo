@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
-import 'package:get/get.dart';
-import 'package:gotech_app/pages/Page_2.dart';
-import 'package:gotech_app/pages/page_3.dart';
-import 'package:lottie/lottie.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({
@@ -30,9 +26,22 @@ class _Page2State extends State<Page2> {
         children: [
           Container(
             child: Image.asset(
-              'assets/page1.jpg',
+              'assets/page2.png',
             ),
           ),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.warning_amber_rounded,
+                color: Colors.orange,
+              ),
+              Text(
+                'Taking screenshots or recording video are \n restricted on this page',
+                textAlign: TextAlign.center,
+              ),
+            ],
+          )
         ],
       ),
     );

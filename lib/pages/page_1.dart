@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:gotech_app/pages/Page_2.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({
