@@ -37,6 +37,7 @@ class Page3 extends StatelessWidget {
           Container(
             child: Image.asset(
               'assets/page3.png',
+              width: MediaQuery.of(context).size.width * 5,
             ),
           ),
           const Text(
