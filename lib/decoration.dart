@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class InitBackground extends StatelessWidget {
+class StartBackgroundColor extends StatelessWidget {
   Widget child;
-  InitBackground({super.key, required this.child});
+  StartBackgroundColor({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

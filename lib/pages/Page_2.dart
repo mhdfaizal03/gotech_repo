@@ -3,6 +3,7 @@ import 'package:flutter_windowmanager/flutter_windowmanager.dart';
 import 'package:get/get.dart';
 import 'package:gotech_app/appbar.dart';
 import 'package:gotech_app/decoration.dart';
+import 'package:gotech_app/nextpage_button.dart';
 import 'package:gotech_app/pages/page_3.dart';
 
 class Page2 extends StatefulWidget {
@@ -18,50 +19,42 @@ class _Page2State extends State<Page2> {
   @override
   void initState() {
     // TODO: implement initState
-    super.initState();
     FlutterWindowManager.addFlags(FlutterWindowManager.FLAG_SECURE);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return InitBackground(
+    return StartBackgroundColor(
       child: Scaffold(
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const Text(
-              'click here to next',
-              style: TextStyle(color: Colors.white),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                Get.to(() => const Page3(), transition: Transition.cupertino);
-              },
-              child: const Icon(Icons.arrow_right),
-            ),
-          ],
-        ),
+        floatingActionButton: NextPageButton(
+            goto: () {
+              FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
+              Get.to(() => const Page3(), transition: Transition.cupertino);
+            },
+            navigateText: 'click here to next'),
         appBar: AppBar(
           backgroundColor: Colors.transparent,
-          leading: const AppBarWidget(),
+          leading: AppBarWidget(
+            onTap: () => Get.back(),
+          ),
         ),
         backgroundColor: Colors.transparent,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'Secure,',
+              'Secured,',
               style: TextStyle(
                   fontSize: 50,
+                  color: Colors.white38,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic),
             ),
             Container(
               child: Image.asset(
                 'assets/page2.png',
+                width: MediaQuery.of(context).size.width * 5,
               ),
             ),
             const Row(
@@ -74,7 +67,7 @@ class _Page2State extends State<Page2> {
                 Text(
                   'Taking screenshots or video recording are \n restricted on this page',
                   textAlign: TextAlign.center,
-                  style: TextStyle(color: Colors.white, fontSize: 15),
+                  style: TextStyle(color: Colors.white70, fontSize: 15),
                 ),
               ],
             )
@@ -87,7 +80,8 @@ class _Page2State extends State<Page2> {
   @override
   void dispose() {
     // TODO: implement dispose
-    super.dispose();
+
     FlutterWindowManager.clearFlags(FlutterWindowManager.FLAG_SECURE);
+    super.dispose();
   }
 }

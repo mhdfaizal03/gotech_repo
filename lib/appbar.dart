@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class AppBarWidget extends StatelessWidget {
-  const AppBarWidget({super.key});
+  Function() onTap;
+  AppBarWidget({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: () => Get.back(),
+        onTap: onTap,
         child: Container(
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: Colors.white54,
             shape: BoxShape.circle,
           ),
           child: const Icon(Icons.arrow_left),

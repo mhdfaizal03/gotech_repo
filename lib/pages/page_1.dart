@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:gotech_app/decoration.dart';
+import 'package:gotech_app/nextpage_button.dart';
 import 'package:gotech_app/pages/Page_2.dart';
 
 class Page1 extends StatefulWidget {
@@ -15,26 +16,12 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return InitBackground(
+    return StartBackgroundColor(
       child: Scaffold(
-        floatingActionButton: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            const Text(
-              'click here to next',
-              style: TextStyle(color: Colors.white),
-            ),
-            const SizedBox(
-              width: 20,
-            ),
-            FloatingActionButton(
-              onPressed: () {
-                Get.to(() => const Page2(), transition: Transition.cupertino);
-              },
-              child: const Icon(Icons.arrow_right),
-            ),
-          ],
-        ),
+        floatingActionButton: NextPageButton(
+            goto: () =>
+                Get.to(() => const Page2(), transition: Transition.cupertino),
+            navigateText: 'click here to next'),
         backgroundColor: Colors.transparent,
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -43,6 +30,7 @@ class _Page1State extends State<Page1> {
               'Hi everyone,',
               style: TextStyle(
                   fontSize: 50,
+                  color: Colors.white38,
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic),
             ),
