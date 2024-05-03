@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_windowmanager/flutter_windowmanager.dart';
+import 'package:get/get.dart';
+import 'package:gotech_app/appbar.dart';
+import 'package:gotech_app/decoration.dart';
+import 'package:gotech_app/pages/page_3.dart';
 
 class Page2 extends StatefulWidget {
   const Page2({
@@ -20,29 +24,62 @@ class _Page2State extends State<Page2> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            child: Image.asset(
-              'assets/page2.png',
+    return InitBackground(
+      child: Scaffold(
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const Text(
+              'click here to next',
+              style: TextStyle(color: Colors.white),
             ),
-          ),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.warning_amber_rounded,
-                color: Colors.orange,
+            const SizedBox(
+              width: 20,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                Get.to(() => const Page3(), transition: Transition.cupertino);
+              },
+              child: const Icon(Icons.arrow_right),
+            ),
+          ],
+        ),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          leading: const AppBarWidget(),
+        ),
+        backgroundColor: Colors.transparent,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Secure,',
+              style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic),
+            ),
+            Container(
+              child: Image.asset(
+                'assets/page2.png',
               ),
-              Text(
-                'Taking screenshots or recording video are \n restricted on this page',
-                textAlign: TextAlign.center,
-              ),
-            ],
-          )
-        ],
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.warning_amber_rounded,
+                  color: Colors.orange,
+                ),
+                Text(
+                  'Taking screenshots or video recording are \n restricted on this page',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 15),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

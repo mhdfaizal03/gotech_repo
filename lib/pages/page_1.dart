@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gotech_app/decoration.dart';
+import 'package:gotech_app/pages/Page_2.dart';
 
 class Page1 extends StatefulWidget {
   const Page1({
@@ -12,18 +15,42 @@ class Page1 extends StatefulWidget {
 class _Page1State extends State<Page1> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text(
-            'Hi everyone,',
-            style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
-          ),
-          Container(
-            child: Image.asset('assets/page1.jpg'),
-          ),
-        ],
+    return InitBackground(
+      child: Scaffold(
+        floatingActionButton: Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            const Text(
+              'click here to next',
+              style: TextStyle(color: Colors.white),
+            ),
+            const SizedBox(
+              width: 20,
+            ),
+            FloatingActionButton(
+              onPressed: () {
+                Get.to(() => const Page2(), transition: Transition.cupertino);
+              },
+              child: const Icon(Icons.arrow_right),
+            ),
+          ],
+        ),
+        backgroundColor: Colors.transparent,
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              'Hi everyone,',
+              style: TextStyle(
+                  fontSize: 50,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic),
+            ),
+            Container(
+              child: Image.asset('assets/page1.png'),
+            ),
+          ],
+        ),
       ),
     );
   }
